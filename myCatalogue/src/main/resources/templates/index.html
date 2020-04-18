@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+  <div style="text-align: center">
+	<h2>
+		<br><br>
+		TP Spring MVC avec Thymeleaf
+		<br><br>
+		Ayoub JEBJI
+		<br><br>
+		EMSI Centre 4IIR G2
+		<br><br>
+		<!-- <a th:href="@{products()}" style="color:black">Liste des produits</a>  -->
+		<form th:action="@{products}" action="post">
+				<div class="mb-3">
+					<button class="btn btn-primary"><h1>Liste des produits</h1></button>
+				</div>
+			</form>
+	</h2>
+  </div>
+</body>
+</html>

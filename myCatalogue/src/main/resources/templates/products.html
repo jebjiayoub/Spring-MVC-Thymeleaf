@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<link rel="stylesheet" type="text/css" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+	<br>
+	<u><h1 style="text-align: center">Products</h1></u>
+	<br><br><br>
+	<div class="card">
+		<div class="card-header">Liste de produits</div>
+		<div class="card-body">
+			<form th:action="@{products}" action="get">
+				<div class="mb-3">
+					<label>Mot clé : </label>
+					<input type="text" name="motCle" th:value="${motCle}" />
+					<button class="btn btn-primary">Chercher</button>
+				</div>
+			</form>
+			<table class="table">
+			<tr>
+				<th>ID</th><th>Designation</th><th>Prix</th><th>Quantité</th><th>Supprimer</th>
+			</tr>
+			<tr th:each="p:${listeproduits.content}">
+				<td th:text="${p.id}"></td>
+				<td th:text="${p.designation}"></td>
+				<td th:text="${p.prix}"></td>
+				<td th:text="${p.quantite}"></td>
+				<td><a class="btn" th:href="@{deleteProduits(id=${p.id},page=${currentPag},motCle=${motCle},size=${size})}" style="color:red">Delete</a></td>
+			</tr>
+			</table>
+			<ul class="nav nav-pills">
+				<li th:class="${status.index==currentPage}?'btn btn-primary':'btn'" th:each="page,status:${pages}">
+					<a th:href="@{products(page=${status.index}, size=${size}, motCle=${motCle})}" th:text="${status.index}" style="color:black"></a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+</body>
+</html>
